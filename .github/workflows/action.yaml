@@ -159,24 +159,13 @@ jobs:
 
   docs:
     runs-on: ubuntu-latest
-    needs: deploy
-
-    strategy:
-      matrix:
-        python-version: [3.8]
-
     steps:
-      - name: Check out code
+      - name: Checkout main
         uses: actions/checkout@v2
 
-      - name: Set up Python ${{matrix.python-version}}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{matrix.python-version}}
-          architecture: x64
-
-      - name: Install requirements
-        run: python3 -m pip install -r function/requirements.txt
-
       - name: Deploy docs
-        run: python3 -m mkdocs gh-deploy --force
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          CONFIG_FILE: mkdocs.yaml
+          REQUIREMENTS: function/requirements.txt
