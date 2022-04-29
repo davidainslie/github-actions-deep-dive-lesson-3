@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  BUCKET: my-bucket-for-workflow-demo-1
+  BUCKET: ${{secrets.AWS_BUCKET}}
 
 jobs:
   lint:
