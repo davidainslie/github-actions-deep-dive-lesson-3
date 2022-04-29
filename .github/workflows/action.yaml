@@ -165,9 +165,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+      - name: Prepare to publish docs
+        uses: actions/setup-python@v2
+        run: |
+          pip install --upgrade pip && pip install mkdocs mkdocs-gen-files
+          git config user.name 'github-actions[bot]' && git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          CONFIG_FILE: mkdocs.yaml
+      - name: Publish docs
+        run: mkdocs gh-deploy
