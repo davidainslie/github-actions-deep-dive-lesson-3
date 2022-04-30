@@ -179,8 +179,7 @@ jobs:
       - name: Deploy Pages site
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
           branch: gh-pages
           folder: docs
-        #env:
-          #GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
