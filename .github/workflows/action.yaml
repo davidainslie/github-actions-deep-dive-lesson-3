@@ -181,5 +181,3 @@ jobs:
         with:
           branch: gh-pages
           folder: docs
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
