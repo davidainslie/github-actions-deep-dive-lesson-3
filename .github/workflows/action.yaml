@@ -107,6 +107,9 @@ jobs:
             --runtime python3.8 \
             --role arn:aws:iam::${{secrets.AWS_ACCOUNT_ID}}:role/my-lambda-role
 
+      - name: Wait 10 seconds
+        run: sleep 10
+
       - name: Invoke test function
         run: |
           aws lambda invoke --function-name test-function-${{matrix.input}} \
