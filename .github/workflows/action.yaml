@@ -120,8 +120,8 @@ jobs:
             exit 1
           fi
 
-      - name: Wait 30 seconds
-        run: sleep 30
+      - name: Wait 10 seconds
+        run: sleep 10
 
       - name: Destroy test function
         if: ${{always()}}
@@ -182,4 +182,4 @@ jobs:
           branch: gh-pages
           folder: docs
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
